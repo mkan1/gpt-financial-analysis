@@ -1,3 +1,0 @@
-Reading: operation_list.txt
-Reading: constant_list.txt
-Reading ~/Playground/gpt-financial-analysis/dataset/train.json
