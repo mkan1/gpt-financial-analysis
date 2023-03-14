@@ -11,4 +11,4 @@ The model used in this project is a fine-tuned GPT model. The GPT model is pre-t
 The jupyter notebook contains all code needed to download and pre-process the dataset. In the future, this is where the model code will reside as well.
 
 
-This repository was created for the final project for Deep Learning at AIT.
+This repository was created for the final project for Deep Learning at AIT by Max Kan and Taichi Kato.
