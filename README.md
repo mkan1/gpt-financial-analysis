@@ -1,14 +1,14 @@
-# QA for Financial Statements
-This project aims to fine-tune a pre-trained GPT model to create an interface for financial statements. The project utilizes the FinQA dataset and code from EMNLP 2021 paper: "FinQA: A Dataset of Numerical Reasoning over Financial Data" to train a deep learning model that can answer questions related to financial statements.
+# Financial Analysis Made Easy
+In today's complex financial landscape, the ability to efficiently analyze financial statements is crucial for investors, businesses, and regulators. However, with the vast amounts of data and intricate reporting structures, extracting specific insights from these documents can be challenging. Our project aims to leverage deep learning and other recent AI advancements to quickly and succintly provide high-quality answers to user-generated questions about financial statements.
 
 ## Dataset
-The FinQA dataset contains over 5,000 financial statements from companies in the S&P 500. The dataset includes questions about financial statements, including income statements, balance sheets, and cash flow statements. Each question is associated with a set of financial statements, which the model can use to find the answer.
+We plan to leverage the FinQA dataset created by [Chen et al.](https://arxiv.org/abs/2109.00122) Using earnings reports of S&P 500 companies, it contains 8,281 financial question-answer pairs, along with their numerical reasoning processes.
 
 ## Model
-The model used in this project is a fine-tuned GPT model. The GPT model is pre-trained on a large corpus of text and has shown impressive results in various NLP tasks. The model is fine-tuned using the FinQA dataset to create an interface for financial statements.
+We plan to [fine-tune](https://platform.openai.com/docs/guides/fine-tuning) the ChatGPT model using the publically available [API](https://openai.com/blog/introducing-chatgpt-and-whisper-apis) to improve performance in answering finance-related queries.
 
 ## Usage
-The jupyter notebook contains all code needed to download and pre-process the dataset. In the future, this is where the model code will reside as well.
+The train.py contains all code needed to process the dataset. Future work will be added to the same repo.
 
 
 This repository was created for the final project for Deep Learning at AIT by Max Kan and Taichi Kato.
