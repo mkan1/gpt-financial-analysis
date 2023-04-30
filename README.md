@@ -8,7 +8,10 @@ We plan to leverage the FinQA dataset created by [Chen et al.](https://arxiv.org
 We plan to [fine-tune](https://platform.openai.com/docs/guides/fine-tuning) the ChatGPT model using the publically available [API](https://openai.com/blog/introducing-chatgpt-and-whisper-apis) to improve performance in answering finance-related queries.
 
 ## Usage
-The train.py contains all code needed to process the dataset. Future work will be added to the same repo.
+The train_basic.py contains all code needed for a benchmark model using a simple seq2seq model. You can use it to pocess the dataset, train a seq2seq model, run inference on it, and evaluate the model using BLEU. Simply run `python train.py`
+
+
+Future work will be added to the same repo.
 
 
 This repository was created for the final project for Deep Learning at AIT by Max Kan and Taichi Kato.
