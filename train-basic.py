@@ -2,10 +2,17 @@ import json
 import numpy as np
 import tensorflow as tf
 from transformers import BertTokenizer
-from tensorflow.keras.models import Model
+from tensorflow.keras.models import Model, load_model
 from tensorflow.keras.layers import Input, LSTM, Dense, Embedding, TimeDistributed
 from tensorflow.keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.callbacks import ModelCheckpoint
 from sklearn.model_selection import train_test_split
+import os
+
+# checkpoint path
+filepath = "model_checkpoint_{epoch:02d}.hdf5"
+checkpoint = ModelCheckpoint(filepath, monitor='val_loss', verbose=1, save_best_only=False, mode='auto', save_freq='epoch')
+
 
 # Load your dataset (context, question, answer)
 # Assuming your dataset is in the form of a list of dictionaries
@@ -25,10 +32,12 @@ dataset = np.array(
                 data['qa']['answer']
 } for data in dict])
 
+dataset = dataset[:1000]
+
 # Define hyperparameters
-EMBEDDING_DIM = 128
-LSTM_UNITS = 128
-MAX_SEQ_LEN = 512
+EMBEDDING_DIM = 32
+LSTM_UNITS = 32
+MAX_SEQ_LEN = 128
 BATCH_SIZE = 32
 EPOCHS = 10
 
@@ -76,13 +85,37 @@ model = Model([encoder_input, decoder_input], decoder_outputs)
 
 model.compile(optimizer="adam", loss="sparse_categorical_crossentropy", metrics=["accuracy"])
 
-history = model.fit(
-    [X_train, y_train[:, :-1]],
-    y_train[:, 1:],
-    epochs=EPOCHS,
-    batch_size=BATCH_SIZE,
-    validation_data=([X_test, y_test[:, :-1]], y_test[:, 1:]),
-)
+train = True
+if train:
+    history = model.fit(
+        [X_train, y_train[:, :-1]],
+        y_train[:, 1:],
+        epochs=EPOCHS,
+        batch_size=BATCH_SIZE,
+        validation_data=([X_test, y_test[:, :-1]], y_test[:, 1:]),
+        callbacks=[checkpoint]
+    )
+else:
+    checkpoint_dir = './'
+    # Get a list of all checkpoint files
+    checkpoint_files = os.listdir(checkpoint_dir)
+
+    # Remove any files that are not .hdf5 files
+    checkpoint_files = [f for f in checkpoint_files if '.hdf5' in f]
+
+    # Sort the checkpoint files based on the last modified time
+    checkpoint_files.sort(key=lambda x: os.path.getmtime(checkpoint_dir + '/' + x))
+
+    # Get the latest checkpoint file
+    latest_checkpoint_file = checkpoint_files[-1]
+
+    # Load the latest checkpoint
+    latest_checkpoint = tf.train.latest_checkpoint(checkpoint_dir)
+
+    model = load_model(os.path.join(checkpoint_dir, latest_checkpoint_file))
+
+    print("Loaded model from:", latest_checkpoint)
+
 
 def buildInferenceModel():
     # Inference encoder model
