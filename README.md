@@ -5,7 +5,7 @@ In today's complex financial landscape, the ability to efficiently analyze finan
 We plan to leverage the FinQA dataset created by [Chen et al.](https://arxiv.org/abs/2109.00122) Using earnings reports of S&P 500 companies, it contains 8,281 financial question-answer pairs, along with their numerical reasoning processes.
 
 ## Model
-This project leverages the OpenAI API to [fine-tune](https://platform.openai.com/docs/guides/fine-tuning) the `ada` base model. `ada` is a generic next word predictor that does not come with any instruction following training. We chose it due to budget constraints: it is the cheapest and fastest model to train.
+This project leverages the OpenAI API to [fine-tune](https://platform.openai.com/docs/guides/fine-tuning) the GPT-3 base model. Specifically, we're using `ada`.
 
 ## Usage
 `finQA.ipynb` contains all the code needed to replicate our project results from start to finish. It processes the data from the original FinQA paper, fine-tunes the model, evaluates the result, etc. Users will, however, need to include their own OpenAI API key in a `api_key.txt` file. `evaluate.py` is also provided to reproduce accuracy figures for the fine-tuned model.
