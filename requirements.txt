@@ -1,4 +1,0 @@
-numpy
-tensorflow
-scikit-learn
-transformers
