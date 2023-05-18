@@ -39,7 +39,7 @@ We transform the problem from an extractive QA task to a generative one, modelin
 We pre-process the data to accommodate the requirements of our model. The text is tokenized and encoded into numerical representations which can be processed by our deep learning models.
 
 ## 6. Our Solution — Models/Evaluation
-We initially used a simple seq2seq model as a benchmark, achieving an accuracy of 9%. To improve the performance, we moved to transformer-based models, specifically the fine-tuned T5-small and fine-tuned text-davinci-03 models. These models provided substantial improvements, with the fine-tuned text-davinci-03 model achieving an accuracy of 61%, approaching the state-of-the-art performance of 68.96% by the ELASTIC model.
+We initially used a simple seq2seq model as a benchmark, achieving an accuracy of 9%. To improve the performance, we moved to transformer-based models, specifically the fine-tuned T5-small and fine-tuned text-davinci-03 models. These models provided substantial improvements, with the fine-tuned text-davinci-03 model achieving an accuracy of around 55%, approaching the state-of-the-art performance of 68.96% by the ELASTIC model.
 
 ## 7. Our Solution — Conclusion
 Our research indicates that while language models like GPT-3 can show considerable prowess in handling intricate reasoning tasks, they are not infallible. We have observed instances of miscalculations and hallucinations, indicating the models may occasionally generate inaccurate or irrelevant responses. These are inherent limitations of purely data-driven, neural network-based models, which lack the grounded semantics provided by symbolic systems.
