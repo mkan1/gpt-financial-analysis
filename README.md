@@ -8,7 +8,7 @@ We plan to leverage the FinQA dataset created by [Chen et al.](https://arxiv.org
 This project leverages the OpenAI API to [fine-tune](https://platform.openai.com/docs/guides/fine-tuning) the GPT-3 base model. Specifically, we're using `ada`.
 
 ## Usage
-`finQA.ipynb` contains all the code needed to replicate our project results from start to finish. It processes the data from the original FinQA paper, fine-tunes the model, evaluates the result, etc. Users will, however, need to include their own OpenAI API key in a `api_key.txt` file. `evaluate.py` is also provided to reproduce accuracy figures for the fine-tuned model.
+`finQA.ipynb` contains all the code needed to replicate our project results from start to finish. It processes the data from the original FinQA paper, fine-tunes the model, evaluates the result, etc. Users will, however, need to include their own OpenAI API key in a `api_key.txt` file. `evaluate.py` is also provided to reproduce accuracy figures for the fine-tuned model. `graveyard` folder contains benchmarking attempts using other models (fine-tuning t5, training seq2seq)
 
 The fully processed training and validation data are stored in `formatted_data_prepared.jsonl` and `formatted_valid_data_prepared.jsonl` respectivley. Overall model performance statistics can also be found in `training_stats.csv`.
 
